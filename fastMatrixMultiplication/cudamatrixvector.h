@@ -10,5 +10,5 @@ class cudaMatrixVector {
 	void incrementCount();
 public:
 	void pushMatrix(cuComplex *M, int row, int col);
-
+	void pushVector(cuComplex *V, int dim);
 };

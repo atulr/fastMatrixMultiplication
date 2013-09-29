@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "cudaMatrixVector.h"
 
 void cudaMatrixVector::incrementCount() {
@@ -23,4 +24,12 @@ void cudaMatrixVector::pushMatrix(cuComplex *m, int row, int col) {
 		fprintf(stderr, "!!!! cuda set matrix error\n");
 	}
 
+}
+
+void cudaMatrixVector::pushVector(cuComplex *v, int dim) {
+	int vectorSize;
+	cudaError_t errStatus;
+	cublasStatus_t status;
+	vectorSize = dim;
+	
 }

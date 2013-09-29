@@ -6,4 +6,5 @@ class mklMatrixVector {
 	void incrementCount();
 public:
 	void pushMatrix(MKL_Complex8 *M, int row, int col);
+	void pushVector(MKL_Complex8 *V, int dim);
 };

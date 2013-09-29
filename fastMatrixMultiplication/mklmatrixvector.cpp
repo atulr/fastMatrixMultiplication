@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "mklmatrixvector.h"
 
 void mklMatrixVector::incrementCount(){
@@ -10,4 +11,8 @@ void mklMatrixVector::pushMatrix(MKL_Complex8 *m, int row, int col) {
 		fprintf(stderr, "!!!! mkl memory allocation error\n");
 	}
 	matrices[count] = m;
+}
+
+void mklMatrixVector::pushVector(MKL_Complex8 *v, int dim) {
+
 }

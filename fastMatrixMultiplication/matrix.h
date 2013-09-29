@@ -8,6 +8,7 @@ class Matrix {
 	cudaMatrixVector cMV;
 	public:
 		void pushMatrix(ComplexType * matrix, int rows, int cols); //adds the matrix to the respective implementation (cuda or MKL)
+		void pushVector(ComplexType * vector, int dim);
 		void multiply(); // will have to figure out the inteface to this call... 
 		ComplexType returnVector(); // will return the result of the matrix vector multiplication...
 };
