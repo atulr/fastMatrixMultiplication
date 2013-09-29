@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include <mkl.h>
 class mklMatrixVector {
-	MKL_Complex8 *matrix;
+	MKL_Complex8 *matrices[200];
 	int count;
 	void incrementCount();
 public:
