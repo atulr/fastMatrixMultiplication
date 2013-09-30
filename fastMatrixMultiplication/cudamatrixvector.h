@@ -7,6 +7,7 @@
 class cudaMatrixVector {
 	cuComplex *matrices[200];
 	cuComplex *vectors[200];
+	cuComplex *outVectors[200];
 	int count;
 	void initializeVector(int col);
 public:
