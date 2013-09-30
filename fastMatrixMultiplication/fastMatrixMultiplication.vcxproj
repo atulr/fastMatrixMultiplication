@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cudamatrixvector.cpp" />
+    <ClCompile Include="deleteme.cpp" />
     <ClCompile Include="fastMatrixMultiplication.cpp" />
     <ClCompile Include="matrix.cpp" />
     <ClCompile Include="mklmatrixvector.cpp" />

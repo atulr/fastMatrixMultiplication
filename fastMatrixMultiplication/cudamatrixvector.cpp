@@ -1,16 +1,12 @@
 #include "stdafx.h"
 #include "cudaMatrixVector.h"
 
-void cudaMatrixVector::incrementCount() {
-	count++;
-}
-
-void cudaMatrixVector::pushMatrix(cuComplex *m, int row, int col) {
+void cudaMatrixVector::pushMatrix(cuComplex *m, int row, int col, int index[][2], int &totalCount) {
 	int matrixSize;
 	cudaError_t errStatus;
 	cublasStatus_t status;
 	matrixSize = row * col;
-	matrices[count++]  = (cuComplex *)malloc(matrixSize * sizeof(cuComplex));
+	matrices[count]  = (cuComplex *)malloc(matrixSize * sizeof(cuComplex));
 	if(!matrices[count]) {
 		fprintf(stderr, "!!!! malloc allocation error cuda vector matrix \n");
 	}
@@ -23,13 +19,14 @@ void cudaMatrixVector::pushMatrix(cuComplex *m, int row, int col) {
 	if(status != cudaSuccess) {
 		fprintf(stderr, "!!!! cuda set matrix error\n");
 	}
+	index[totalCount][0] = count++;
+	index[totalCount++][1] = 1;
+	initializeVector(col);
 
 }
 
-void cudaMatrixVector::pushVector(cuComplex *v, int dim) {
-	int vectorSize;
+void cudaMatrixVector::initializeVector(int col) {
 	cudaError_t errStatus;
 	cublasStatus_t status;
-	vectorSize = dim;
-	
+
 }

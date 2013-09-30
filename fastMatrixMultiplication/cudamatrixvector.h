@@ -6,9 +6,9 @@
 
 class cudaMatrixVector {
 	cuComplex *matrices[200];
+	cuComplex *vectors[200];
 	int count;
-	void incrementCount();
+	void initializeVector(int col);
 public:
-	void pushMatrix(cuComplex *M, int row, int col);
-	void pushVector(cuComplex *V, int dim);
+	void pushMatrix(cuComplex *M, int row, int col, int index[][2], int &totalCount);
 };

@@ -5,18 +5,11 @@
 void Matrix::pushMatrix(ComplexType * matrix, int row, int col) {
 
 	if(row > 3000 || col > 3000) 
-		cMV.pushMatrix((cuComplex *) matrix, row, col);
+		cMV.pushMatrix((cuComplex *) matrix, row, col, index, totalCount);
 	else 
-		mMV.pushMatrix((MKL_Complex8 *) matrix, row, col);
+		mMV.pushMatrix((MKL_Complex8 *) matrix, row, col, index, totalCount);
 }
 
-void Matrix::pushVector(ComplexType * vector, int dim) {
-	if(dim > 3000)
-		cMV.pushVector((cuComplex *) vector, dim);
-	else
-		mMV.pushVector((MKL_Complex8 *) vector, dim);
-}
-
-void Matrix::multiply(ComplexType *vector, int dim) {
+void Matrix::multiply() {
 
 }

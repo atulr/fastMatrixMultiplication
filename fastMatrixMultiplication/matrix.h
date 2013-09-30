@@ -4,11 +4,14 @@
 #include "cudamatrixvector.h"
 class Matrix {
 	ComplexType *myComplexType; 
+	int index[200][2];
 	mklMatrixVector mMV;
 	cudaMatrixVector cMV;
+	int totalCount;
 	public:
-		void pushMatrix(ComplexType * matrix, int rows, int cols); //adds the matrix to the respective implementation (cuda or MKL)
-		void pushVector(ComplexType * vector, int dim);
-		void multiply(); // will have to figure out the inteface to this call... 
+		int count();
+		void incrementCount() {totalCount++;};
+		void pushMatrix(ComplexType * matrix, int rows, int cols); //adds the matrix to the respective implementation (cuda or MKL) and creates a memory allocation for a compatible vector on the respective device..
+		void multiply(); // will have to figure out the inteface to this call... This is what the interface looks like...
 		ComplexType returnVector(); // will return the result of the matrix vector multiplication...
 };
