@@ -21,13 +21,13 @@ void cudaMatrixVector::pushMatrix(cuComplex *m, int row, int col, int index[][2]
 	}
 	index[totalCount][0] = count;
 	index[totalCount++][1] = 1;
+	
 	initializeVector(col);
 
 }
 
 void cudaMatrixVector::initializeVector(int col) {
 	cudaError_t errStatus;
-	cublasStatus_t status;
 	vectors[count] = (cuComplex *)malloc(col * sizeof(cuComplex));
 	if(!vectors[count]) {
 		fprintf(stderr, "!!!! cuda in vector malloc error\n");
@@ -46,5 +46,17 @@ void cudaMatrixVector::initializeVector(int col) {
 	if(errStatus != cudaSuccess) {
 		 fprintf(stderr, "!!!! cuda out vector cudaMalloc error\n");
 	}
+	vectorDims[count] = col;
+	count++;
 
+}
+
+void cudaMatrixVector::updateVector(cuComplex *V, int index) {
+	cublasStatus_t status;
+
+	status = cublasSetVector(vectorDims[index], sizeof(cuComplex), V, 1, vectors[index], 1);
+
+	if(status != cudaSuccess) {
+		fprintf(stderr, "!!!! cuda update vector error\n");
+	}
 }

@@ -26,3 +26,7 @@ void mklMatrixVector::initializeVector(int col) {
 
 	count++;
 }
+
+void mklMatrixVector::updateVector(MKL_Complex8 *v, int index) {
+	vectors[index] = v;
+}

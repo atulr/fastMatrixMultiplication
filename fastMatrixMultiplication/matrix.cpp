@@ -10,6 +10,14 @@ void Matrix::pushMatrix(ComplexType * matrix, int row, int col) {
 		mMV.pushMatrix((MKL_Complex8 *) matrix, row, col, index, totalCount);
 }
 
+void Matrix::updateVector(ComplexType *vector, int i) {
+	if(index[i][1] == 1) {
+		cMV.updateVector((cuComplex *) vector, index[i][0]);
+	} else {
+		mMV.updateVector((MKL_Complex8 *) vector, index[i][0]);
+	}
+}
+
 void Matrix::multiply() {
 
 }
