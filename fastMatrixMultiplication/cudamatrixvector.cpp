@@ -60,3 +60,7 @@ void cudaMatrixVector::updateVector(cuComplex *V, int index) {
 		fprintf(stderr, "!!!! cuda update vector error\n");
 	}
 }
+
+cuComplex* cudaMatrixVector::returnVector(int i) {
+	return outVectors[i];
+}

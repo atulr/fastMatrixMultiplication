@@ -9,4 +9,5 @@ class mklMatrixVector {
 public:
 	void updateVector(MKL_Complex8 *V, int index);
 	void pushMatrix(MKL_Complex8 *M, int row, int col, int index[][2], int &totalCount);
+	MKL_Complex8* returnVector(int i);
 };

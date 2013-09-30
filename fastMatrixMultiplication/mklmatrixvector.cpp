@@ -30,3 +30,7 @@ void mklMatrixVector::initializeVector(int col) {
 void mklMatrixVector::updateVector(MKL_Complex8 *v, int index) {
 	vectors[index] = v;
 }
+
+MKL_Complex8* mklMatrixVector::returnVector(int i) {
+	return outVectors[i];
+}

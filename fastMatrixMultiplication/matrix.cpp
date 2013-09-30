@@ -18,6 +18,14 @@ void Matrix::updateVector(ComplexType *vector, int i) {
 	}
 }
 
+ComplexType* Matrix::returnVector(int i) {
+	if(index[i][1] == 1) {
+		return (ComplexType*) cMV.returnVector(index[i][0]);
+	} else{
+		return (ComplexType*) mMV.returnVector(index[i][0]);
+	}
+}
+
 void Matrix::multiply() {
 
 }
