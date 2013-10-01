@@ -19,6 +19,8 @@ void cudaMatrixVector::pushMatrix(cuComplex *m, int row, int col, int index[][2]
 	if(status != cudaSuccess) {
 		fprintf(stderr, "!!!! cuda set matrix error\n");
 	}
+	matrixDims[count][0] = row;
+	matrixDims[count][1] = col;
 	index[totalCount][0] = count;
 	index[totalCount++][1] = 1;
 	
@@ -63,4 +65,23 @@ void cudaMatrixVector::updateVector(cuComplex *V, int index) {
 
 cuComplex* cudaMatrixVector::returnVector(int i) {
 	return outVectors[i];
+}
+
+void cudaMatrixVector::multiply(cublasHandle_t handle) {
+	cublasStatus_t status;
+	cuComplex alph, bet;
+	alph.x = 1.0;
+	alph.y = 0.0;
+	bet.x = 0.0;
+	bet.y = 0.0;
+
+	for(int i = 0; i < count; i++) {
+		status = cublasCgemv(handle, CUBLAS_OP_T, matrixDims[i][0], matrixDims[i][1],
+                                      &alph, matrices[i], matrixDims[i][0],
+									  vectors[i] , 1, &bet, outVectors[i], 1);
+		if(status != cudaSuccess) {
+			fprintf(stderr, "!!!! cublasCgemv error .. \n");
+			return;
+		}
+	}
 }

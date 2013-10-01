@@ -8,6 +8,7 @@ class cudaMatrixVector {
 	cuComplex *matrices[200];
 	cuComplex *vectors[200];
 	cuComplex *outVectors[200];
+	int matrixDims[200][2];
 	int vectorDims[200];
 	int count;
 	void initializeVector(int col);
@@ -15,4 +16,5 @@ public:
 	void updateVector(cuComplex *V, int index);
 	void pushMatrix(cuComplex *M, int row, int col, int index[][2], int &totalCount);
 	cuComplex* returnVector(int i);
+	void multiply(cublasHandle_t handle);
 };

@@ -27,5 +27,15 @@ ComplexType* Matrix::returnVector(int i) {
 }
 
 void Matrix::multiply() {
+	cublasHandle_t handle;
+	cMV.multiply(handle);
+	mMV.multiply();
+	cudaError_t cudaStatus = cudaThreadSynchronize();
+    if (cudaStatus != cudaSuccess)
+    {
+         fprintf(stderr, "!!!! GPU program execution error on cudaThreadSynchronize : cudaError=%d,(%s)\n", cudaStatus,cudaGetErrorString(cudaStatus));
+         return;
+    }
 
+	cublasDestroy(handle);
 }

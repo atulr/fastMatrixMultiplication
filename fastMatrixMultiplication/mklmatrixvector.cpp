@@ -27,6 +27,12 @@ void mklMatrixVector::initializeVector(int col) {
 	count++;
 }
 
+void mklMatrixVector::multiply() {
+	//for (int i=0; i<count; i++)
+ //       cblas_cgemv(CblasRowMajor, CblasNoTrans, m, k, &alpha, Am, k, Bm, 1, &beta, Cm, 1);
+
+}
+
 void mklMatrixVector::updateVector(MKL_Complex8 *v, int index) {
 	vectors[index] = v;
 }
