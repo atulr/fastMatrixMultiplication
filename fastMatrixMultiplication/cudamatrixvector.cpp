@@ -40,6 +40,11 @@ void cudaMatrixVector::initializeVector(int col) {
 		fprintf(stderr, "!!!! cuda out vector malloc error\n");
 	}
 
+	outVectorsHost[count] = (cuComplex *)calloc(col, sizeof(cuComplex)); 
+	if(!outVectorsHost[count]) {
+		fprintf(stderr, "!!!! cuda out host vector malloc error\n");
+	}
+
 	errStatus = cudaMalloc((void **)&vectors[count], col * sizeof(cuComplex));
 	if(errStatus != cudaSuccess) {
 		 fprintf(stderr, "!!!! cuda in vector cudaMalloc error\n");
@@ -65,7 +70,8 @@ void cudaMatrixVector::updateVector(cuComplex *V, int index) {
 }
 
 cuComplex* cudaMatrixVector::returnVector(int i) {
-	return outVectors[i];
+	cudaMemcpy(outVectorsHost[i], outVectors[i], vectorDims[i] * sizeof(cuComplex), cudaMemcpyDeviceToHost); 
+	return outVectorsHost[i];
 }
 
 void cudaMatrixVector::multiply(cublasHandle_t handle) {

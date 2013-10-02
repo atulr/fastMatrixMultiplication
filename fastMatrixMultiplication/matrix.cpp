@@ -26,6 +26,10 @@ ComplexType* Matrix::returnVector(int i) {
 	}
 }
 
+void Matrix::printMatrix(int i) {
+
+}
+
 void Matrix::multiply() {
 	cublasHandle_t handle;
 

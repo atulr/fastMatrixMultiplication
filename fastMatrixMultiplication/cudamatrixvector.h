@@ -8,6 +8,7 @@ class cudaMatrixVector {
 	cuComplex *matrices[200];
 	cuComplex *vectors[200];
 	cuComplex *outVectors[200];
+	cuComplex *outVectorsHost[200];
 	int matrixDims[200][2];
 	int vectorDims[200];
 	int count;
