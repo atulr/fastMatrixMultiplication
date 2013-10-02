@@ -8,6 +8,8 @@ void mklMatrixVector::pushMatrix(MKL_Complex8 *m, int row, int col, int index[][
 		fprintf(stderr, "!!!! mkl matrix memory allocation error. \n");
 	}
 	matrices[count] = m;
+	matrixDimensions[count][0] = row;
+	matrixDimensions[count][1] = col;
 	index[totalCount][0] = count;
 	index[totalCount++][1] = 0;
 	initializeVector(col);
@@ -28,8 +30,13 @@ void mklMatrixVector::initializeVector(int col) {
 }
 
 void mklMatrixVector::multiply() {
-	//for (int i=0; i<count; i++)
- //       cblas_cgemv(CblasRowMajor, CblasNoTrans, m, k, &alpha, Am, k, Bm, 1, &beta, Cm, 1);
+	MKL_Complex8 alpha, beta;
+	alpha.imag = 0.0;
+	alpha.real = 0.0;
+	beta.imag = 0.0;
+	beta.real = 0.0;
+	for (int i=0; i<count; i++)
+       cblas_cgemv(CblasRowMajor, CblasNoTrans, matrixDimensions[i][0], matrixDimensions[i][1], &alpha, matrices[i], matrixDimensions[i][0], vectors[i], 1, &beta, outVectors[i], 1);
 
 }
 

@@ -28,6 +28,14 @@ ComplexType* Matrix::returnVector(int i) {
 
 void Matrix::multiply() {
 	cublasHandle_t handle;
+
+	if (cublasCreate(&handle) != CUBLAS_STATUS_SUCCESS)
+    {
+        fprintf(stdout, "CUBLAS initialization failed!\n");
+        cudaDeviceReset();
+        exit(EXIT_FAILURE);
+	}
+
 	cMV.multiply(handle);
 	mMV.multiply();
 	cudaError_t cudaStatus = cudaThreadSynchronize();

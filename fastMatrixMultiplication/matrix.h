@@ -11,6 +11,7 @@ class Matrix {
 	public:
 		int count();
 		void incrementCount() {totalCount++;};
+		ComplexType* returnComplexType() {return myComplexType;};
 		void pushMatrix(ComplexType * matrix, int rows, int cols); //adds the matrix to the respective implementation (cuda or MKL) and creates a memory allocation for a compatible vector on the respective device..
 		void multiply(); // will have to figure out the inteface to this call... This is what the interface looks like...
 		void updateVector(ComplexType *vector, int index); //this updates the value of the vector at index..
