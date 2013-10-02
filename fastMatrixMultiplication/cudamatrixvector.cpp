@@ -16,6 +16,7 @@ void cudaMatrixVector::pushMatrix(cuComplex *m, int row, int col, int index[][2]
 	}
 
 	status = cublasSetMatrix(row, col, sizeof(cuComplex), m, row, matrices[count], row);
+
 	if(status != cudaSuccess) {
 		fprintf(stderr, "!!!! cuda set matrix error\n");
 	}

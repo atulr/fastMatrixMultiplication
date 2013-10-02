@@ -9,7 +9,8 @@ class Matrix {
 	cudaMatrixVector cMV;
 	int totalCount;
 	public:
-		Matrix() {myComplexType->complex = 0.0; myComplexType->real = 0.0;};
+		Matrix() {myComplexType = 0; totalCount = 0;};
+		void printMatrix(int i);  //A test function to see if the matrices are getting initialized. Also, checks if matrix indexing happens properly...
 		int count();
 		void incrementCount() {totalCount++;};
 		ComplexType* returnComplexType() {return myComplexType;};

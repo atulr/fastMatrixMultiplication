@@ -13,6 +13,7 @@ class cudaMatrixVector {
 	int count;
 	void initializeVector(int col);
 public:
+	cudaMatrixVector() {count = 0;};
 	void updateVector(cuComplex *V, int index);
 	void pushMatrix(cuComplex *M, int row, int col, int index[][2], int &totalCount);
 	cuComplex* returnVector(int i);
