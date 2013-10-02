@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "matrix.h"
-#include "mkl.h"
+//#include "mkl.h"
 
 void Matrix::pushMatrix(ComplexType * matrix, int row, int col) {
 

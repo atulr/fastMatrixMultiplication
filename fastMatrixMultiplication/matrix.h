@@ -9,6 +9,7 @@ class Matrix {
 	cudaMatrixVector cMV;
 	int totalCount;
 	public:
+		Matrix() {myComplexType->complex = 0.0; myComplexType->real = 0.0;};
 		int count();
 		void incrementCount() {totalCount++;};
 		ComplexType* returnComplexType() {return myComplexType;};

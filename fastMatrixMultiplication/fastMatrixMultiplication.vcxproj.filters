@@ -53,8 +53,5 @@
     <ClCompile Include="mklmatrixvector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="deleteme.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

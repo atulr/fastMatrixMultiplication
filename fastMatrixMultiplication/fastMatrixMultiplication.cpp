@@ -6,7 +6,7 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	Matrix m;
+	//Matrix m;
 	//struct myType {
 	//	float real;
 	//	float complex;
