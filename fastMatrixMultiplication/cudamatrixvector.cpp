@@ -6,7 +6,8 @@ void cudaMatrixVector::pushMatrix(cuComplex *m, int row, int col, int index[][2]
 	cudaError_t errStatus;
 	cublasStatus_t status;
 	matrixSize = row * col;
-	matrices[count]  = (cuComplex *)malloc(matrixSize * sizeof(cuComplex));
+	//matrices[count]  = (cuComplex *)malloc(matrixSize * sizeof(cuComplex));
+	//matrices[count]  = m;
 	if(!matrices[count]) {
 		fprintf(stderr, "!!!! cuda matrix malloc allocation error. \n");
 	}
@@ -81,7 +82,6 @@ void cudaMatrixVector::multiply(cublasHandle_t handle) {
 	alph.y = 0.0;
 	bet.x = 0.0;
 	bet.y = 0.0;
-
 	for(int i = 0; i < count; i++) {
 		status = cublasCgemv(handle, CUBLAS_OP_T, matrixDims[i][0], matrixDims[i][1],
                                       &alph, matrices[i], matrixDims[i][0],

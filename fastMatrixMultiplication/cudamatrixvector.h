@@ -3,7 +3,7 @@
 #include <cublas_v2.h>
 #include <helper_cuda.h>
 #include <host_defines.h>
-
+#include "mklmatrixvector.h"
 class cudaMatrixVector {
 	cuComplex *matrices[200];
 	cuComplex *vectors[200];

@@ -1,3 +1,5 @@
+#ifndef MKLMATRIXVECTOR_H
+#define MKLMATRIXVECTOR_H
 #include "stdafx.h"
 #include <mkl.h>
 class mklMatrixVector {
@@ -6,6 +8,7 @@ class mklMatrixVector {
 	MKL_Complex8 *outVectors[200];
 	int matrixDimensions[200][2];
 	int count;
+	double totalTime;
 	void initializeVector(int col);
 public:
 	mklMatrixVector() {count = 0;};
@@ -13,4 +16,6 @@ public:
 	void pushMatrix(MKL_Complex8 *M, int row, int col, int index[][2], int &totalCount);
 	MKL_Complex8* returnVector(int i);
 	void multiply();
+	double returnTimeTaken();
 };
+#endif

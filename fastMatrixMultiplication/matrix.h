@@ -2,6 +2,7 @@
 #include "complextype.h"
 #include "mklmatrixvector.h"
 #include "cudamatrixvector.h"
+
 class Matrix {
 	ComplexType *myComplexType; 
 	int index[200][2];

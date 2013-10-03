@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "matrix.h"
-//#include "mkl.h"
+#include <mkl.h>
 
 void Matrix::pushMatrix(ComplexType * matrix, int row, int col) {
 
@@ -39,15 +39,18 @@ void Matrix::multiply() {
         cudaDeviceReset();
         exit(EXIT_FAILURE);
 	}
-
+	double start = dsecnd();
 	cMV.multiply(handle);
 	mMV.multiply();
-	cudaError_t cudaStatus = cudaThreadSynchronize();
-    if (cudaStatus != cudaSuccess)
-    {
-         fprintf(stderr, "!!!! GPU program execution error on cudaThreadSynchronize : cudaError=%d,(%s)\n", cudaStatus,cudaGetErrorString(cudaStatus));
-         return;
-    }
-
+	//cudaError_t cudaStatus = cudaDeviceSynchronize();
+	// if (cudaStatus != cudaSuccess)
+ //   {
+ //        fprintf(stderr, "!!!! GPU program execution error on cudaThreadSynchronize : cudaError=%d,(%s)\n", cudaStatus,cudaGetErrorString(cudaStatus));
+ //        return;
+ //   }
+	double end = dsecnd();
+	double totalTime = end - start;
+	double mklTime = mMV.returnTimeTaken();
 	cublasDestroy(handle);
+	cudaDeviceReset();
 }
